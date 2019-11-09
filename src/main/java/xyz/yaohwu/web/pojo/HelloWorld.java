@@ -1,4 +1,4 @@
-package xyz.yaohwu;
+package xyz.yaohwu.web.pojo;
 
 /**
  * @author yaohwu
