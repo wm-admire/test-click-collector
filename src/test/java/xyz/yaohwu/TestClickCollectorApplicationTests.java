@@ -2,8 +2,9 @@ package xyz.yaohwu;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import xyz.yaohwu.web.TestClickCollectorApplication;
 
-@SpringBootTest
+@SpringBootTest(classes = TestClickCollectorApplication.class)
 class TestClickCollectorApplicationTests {
 
     @Test
