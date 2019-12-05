@@ -9,6 +9,7 @@ import xyz.yaohwu.spider.jira.ConfigException;
 import xyz.yaohwu.spider.jira.issue.JiraTestIssueConfig;
 import xyz.yaohwu.spider.jira.issue.JiraTestIssueSpider;
 import xyz.yaohwu.web.pojo.HelloWorld;
+import xyz.yaohwu.web.pojo.Response;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -32,10 +33,10 @@ public class HelloWorldController {
     }
 
     @RequestMapping("/search")
-    public void search(@RequestParam(value = "username") String username,
-                       @RequestParam(value = "password") String password,
-                       @RequestParam(value = "users") String users,
-                       @PathVariable String version) {
+    public Response search(@RequestParam(value = "username") String username,
+                           @RequestParam(value = "password") String password,
+                           @RequestParam(value = "users") String users,
+                           @PathVariable String version) {
         if (username == null) {
             throw new ConfigException("username is null");
         }
@@ -52,6 +53,7 @@ public class HelloWorldController {
             JiraTestIssueConfig.getInstance().addUser(s);
         }
         JiraTestIssueSpider.getInstance().crab();
+        return Response.success();
     }
 
 }
