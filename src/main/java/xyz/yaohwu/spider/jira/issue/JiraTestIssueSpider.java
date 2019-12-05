@@ -14,6 +14,7 @@ import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -131,8 +132,12 @@ public class JiraTestIssueSpider implements Spider {
                 logger.error(e.getMessage(), e);
             }
             if (result != null) {
-                Integer score = result.getInt("total");
-                results.add(user, score);
+                try {
+                    Integer score = result.getInt("total");
+                    results.add(user, score);
+                } catch (JSONException e) {
+                    logger.error(user + e.getMessage(), e);
+                }
             }
         }
         return results;

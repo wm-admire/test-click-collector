@@ -27,8 +27,8 @@ public class TestIssueResult {
         content.sort(Map.Entry.comparingByValue());
         StringBuilder builder = new StringBuilder(detail);
         for (Map.Entry<String, Integer> stringIntegerEntry : content) {
-            builder.append(stringIntegerEntry.getKey())
-                    .append("\n")
+            builder.append("\n")
+                    .append(stringIntegerEntry.getKey())
                     .append(": ")
                     .append(stringIntegerEntry.getValue());
         }
