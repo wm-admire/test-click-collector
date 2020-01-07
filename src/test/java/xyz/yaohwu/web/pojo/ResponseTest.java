@@ -14,7 +14,7 @@ class ResponseTest {
     @Test
     void status400() {
         Response response = Response.error(400, "bad request", "bad request");
-        // fake fail
-        Assertions.assertEquals(401, response.getStatus());
+
+        Assertions.assertEquals(400, response.getStatus());
     }
 }
